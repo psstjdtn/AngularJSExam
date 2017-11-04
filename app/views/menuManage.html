@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <h1>메뉴</h1>
+  <!-- Trigger the modal with a button --> 
+  <table class="table">
+    <thead><tr>
+      <td align="center">id</td>
+      <td align="center">메뉴명</td>
+      <td align="center">가격</td>
+      <td align="center">사진</td>
+      <td align="center">삭제</td>
+    </tr></thead>
+    <tbody>
+      <tr ng-repeat="obj in menuList">
+        <td align="center">{{obj.id}}</td>
+        <td align="center">{{obj.name}}</td>
+        <td align="center">{{obj.price}}</td>
+        <td>
+        <div class="container">
+          <img ng-src="http://172.16.2.3:52273/upload_image/{{obj.imgurl}}" class="img-rounded" width="85" height="65"> 
+        </div>
+        </td>
+        <td><button align="center" type="button" class="btn btn-danger btn-sm" 
+          ng-click="deleteMenuInfo(obj.id)">삭제</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

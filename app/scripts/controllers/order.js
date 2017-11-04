@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name angularJsexamApp.controller:UserWithdrawCtrl
+ * @name angularJsexamApp.controller:OrderCtrl
  * @description
- * # UserWithdrawCtrl
+ * # OrderCtrl
  * Controller of the angularJsexamApp
  */
 angular.module('angularJsexamApp')
-  .controller('UserWithdrawCtrl', function () {
+  .controller('OrderCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

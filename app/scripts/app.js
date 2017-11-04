@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ui.router'
+    'ui.router',
+
   ])
   .config(function ($stateProvider, $urlRouterProvider, $routeProvider) {
     $urlRouterProvider.otherwise("/");
@@ -27,31 +28,22 @@ angular
         templateUrl:'views/main.html',
         controller:'MainCtrl'
       })
-      .state('login', {
-        url:'/login',
-        templateUrl:'views/login.html',
-        controller:'LoginCtrl'
+      .state('menuManage', {
+        url:'/menu',
+        templateUrl:'views/menuManage.html',
+        controller:'MenuManageCtrl'
       })
-      .state('signup', {
-        url:'/signup',
-        templateUrl:'views/signup.html',
-        controller:'SignupCtrl'
+      .state('order', {
+        url:'/order/biz/list',
+        templateUrl:'views/order.html',
+        controller:'OrderCtrl'
       })
-      .state('user-list', {
-        url:'/user/list',
-        templateUrl:'views/user-list.html',
-        controller:'UserListCtrl'
+      .state('businessInfo', {
+        url:'/users/biz',
+        templateUrl:'views/businessInfo.html',
+        controller:'BusinessInfoCtrl'
       })
-      .state('user-detail', {
-        url:'/user/detail',
-        templateUrl:'views/user-detail.html',
-        controller:'UserDetailCtrl'
-      })
-      .state('user-withdraw', {
-        url:'/user/withdraw',
-        templateUrl:'views/user-withdraw.html',
-        controller:'UserWithdrawCtrl'
-      })
+    
 
     /*$routeProvider
       .when('/', {

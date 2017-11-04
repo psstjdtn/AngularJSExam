@@ -4,10 +4,13 @@
     <thead><tr><th>id</th><th>name</th><th>age</th><th>수정</th><th>삭제</th></tr></thead>
     <tbody>
       <tr ng-repeat="obj in userList">
-        <!-- Trigger the modal with a button -->
-        <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="getUserInfo(obj.id)">{{obj.id}}</button></td>
+        <!-- Trigger the modal with a button 
+        <td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="getUserInfo(obj.id)">상세정보</button></td>-->
+        <td><input type="text" class="form-control" ng-model="obj.businessid"></td>
         <td><input type="text" class="form-control" ng-model="obj.name"></td>
-        <td><input type="text" class="form-control" ng-model="obj.age"></td>
+        <td><input type="text" class="form-control" ng-model="obj.price"></td>
+        <td><input type="text" class="form-control" ng-model="obj.imgurl"></td>
+
         <td><button type="button" class="btn btn-warning" ng-click="modifyUserInfo(obj.id,obj.name,obj.age)">Edit</button></td>
         <td><button type="button" class="btn btn-danger" ng-click="deleteUserInfo(obj.id)">Danger</button></td>
       </tr>
