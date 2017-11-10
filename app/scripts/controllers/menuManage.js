@@ -9,21 +9,29 @@
  */
 angular.module('angularJsexamApp')
   .controller('MenuManageCtrl', [
-  	"Data", "$scope", "$state", 
-  	function (Data, $scope, $state) {
+  	"Data", "$scope", "$state", "$location", 
+  	function (Data, $scope, $state, $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.businessid=0;
     //페이지가 로딩되었을 때 호출
     $scope.$on('$viewContentLoaded', function() {
-    	$scope.requestMenuList();
+        $scope.businessid = $location.search().businessid;
+        var businessid = $location.search().businessid;
+        if(businessid !=undefined) {
+            //window.alert(businessid);
+           $scope.requestMenuList(businessid);
+        }
     });
+    
     $scope.menuList = [];
-    $scope.requestMenuList = function() {
-    	var dataPromise = Data.getData(
-    		'http://172.16.2.3:52273/menu');
+    $scope.requestMenuList = function(businessid) {
+        var dataPromise = Data.getData(
+    		'http://172.16.2.3:52273/menu/list/'+businessid);
     	dataPromise.then(function(results) {
     		$scope.menuList = results.data;
     	},function(reason){},function(update){});
@@ -46,8 +54,6 @@ angular.module('angularJsexamApp')
     	},function(reason){},function(update){});
     }
 
-    
-
     $scope.menuInfo = ""
     $scope.getUserInfo = function(id) {
     	var dataPromise = Data.getData(
@@ -62,17 +68,6 @@ angular.module('angularJsexamApp')
     $scope.price = "";
     $scope.imgurl = "";
     
-    $scope.saveMenuInfo= function() {
-        var dataPromise = Data.setData(
-        'http://172.16.2.3:52273/menu',
-        '&businessid='+ $scope.businessid + '&name=' + $scope.name +
-            '&price='+ $scope.price + '&imgurl=' + $scope.imgurl);
-        dataPromise.then(function(results){
-        $scope.businessid = "";
-        $scope.name = "";
-        $scope.price = "";
-        $scope.imgurl = "";
-        },function(reason){}, function(update){});        
-    }
+
     
   }]);

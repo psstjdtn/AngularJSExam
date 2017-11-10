@@ -2,14 +2,13 @@
 
 /**
  * @ngdoc function
- * @name angularJsexamApp.controller:BusinessInfoCtrl
+ * @name angularJsexamApp.controller:MenuManageCtrl
  * @description
- * # BusinessInfoCtrl
+ * # MenuManageCtrl
  * Controller of the angularJsexamApp
  */
-
 angular.module('angularJsexamApp')
-  .controller('BusinessInfoCtrl', [
+  .controller('UserMenuCtrl', [
   	"Data", "$scope", "$state", "$location", 
   	function (Data, $scope, $state, $location) {
     this.awesomeThings = [
@@ -25,9 +24,26 @@ angular.module('angularJsexamApp')
         var businessid = $location.search().businessid;
         if(businessid !=undefined) {
             //window.alert(businessid);
-           $scope.getUserInfo(businessid);
+           $scope.requestMenuList(businessid);
         }
     });
+    
+    $scope.menuList = [];
+    $scope.requestMenuList = function(businessid) {
+        var dataPromise = Data.getData(
+    		'http://172.16.2.3:52273/menu/list/'+businessid);
+    	dataPromise.then(function(results) {
+    		$scope.menuList = results.data;
+    	},function(reason){},function(update){});
+    }
+
+    $scope.deleteMenuInfo = function(id) {
+    	var dataPromise = Data.deleteData(
+    		'http://172.16.2.3:52273/menu/' +id, '');
+    	dataPromise.then(function(results) {
+    		$scope.requestMenuList();
+    	},function(reason){},function(update){});
+    }
 
     $scope.modifyMenuInfo = function(id, name, age) {
     	var dataPromise = Data.modifyData(
@@ -38,12 +54,12 @@ angular.module('angularJsexamApp')
     	},function(reason){},function(update){});
     }
 
-    $scope.businessInfo = ""
-    $scope.getUserInfo = function(businessid) {
+    $scope.menuInfo = ""
+    $scope.getUserInfo = function(id) {
     	var dataPromise = Data.getData(
-    		'http://172.16.2.3:52273/menu/' + businessid, '');
+    		'http://172.16.2.3:52273/menu/' +id, '');
     	dataPromise.then(function(results) {
-    		$scope.businessInfo = results.data;
+    		$scope.menuInfo = results.data;
     	},function(reason){},function(update){});
     }
 
@@ -51,5 +67,7 @@ angular.module('angularJsexamApp')
     $scope.name = "";
     $scope.price = "";
     $scope.imgurl = "";
+    
 
-}]);
+    
+  }]);

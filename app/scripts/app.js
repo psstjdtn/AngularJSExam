@@ -29,19 +29,24 @@ angular
         controller:'MainCtrl'
       })
       .state('menuManage', {
-        url:'/menu',
+        url:'/menu/',
         templateUrl:'views/menuManage.html',
         controller:'MenuManageCtrl'
       })
       .state('order', {
-        url:'/order/biz/list',
+        url:'/order/biz/list/',
         templateUrl:'views/order.html',
         controller:'OrderCtrl'
       })
       .state('businessInfo', {
-        url:'/users/biz',
+        url:'/users/biz/',
         templateUrl:'views/businessInfo.html',
         controller:'BusinessInfoCtrl'
+      })
+      .state('userMenu', {
+        url:'/usermenu/',
+        templateUrl:'views/user-menu.html',
+        controller:'UserMenuCtrl'
       })
     
 
