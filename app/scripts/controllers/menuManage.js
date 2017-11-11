@@ -41,7 +41,7 @@ angular.module('angularJsexamApp')
     	var dataPromise = Data.deleteData(
     		'http://172.16.2.3:52273/menu/' +id, '');
     	dataPromise.then(function(results) {
-    		$scope.requestMenuList();
+    		$scope.requestMenuList($scope.businessid);
     	},function(reason){},function(update){});
     }
 
@@ -50,7 +50,7 @@ angular.module('angularJsexamApp')
     		'http://172.16.2.3:52273/menu/' + id,
     		'&name='+ name + '&age=' + age);
     	dataPromise.then(function(results) {
-    		$scope.requestMenuList();
+    		$scope.requestMenuList($scope.businessid);
     	},function(reason){},function(update){});
     }
 

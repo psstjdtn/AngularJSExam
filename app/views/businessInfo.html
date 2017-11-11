@@ -1,29 +1,27 @@
-<div class="jumbotron">
-  <h1>내정보</h1>
+<div class="container">
+  <h1 align="center">내정보</h1>
   <!-- Trigger the modal with a button --> 
   <div>
 </div>
 
 <div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <form name="loginForm" ng-submit="submitLogin()">
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-envelope-o"></i>
-          </span>
-          <input id="login-userid" type="text" name="user_id" class="form-control input-lg" placeholder="User Id" ng-model="login.user_id" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="fa fa-asterisk"></i>
-          </span>
-          <input id="login-password" type="password" name="password" class="form-control input-lg" placeholder="Password" ng-model="login.password" required>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block btn-shadow">Login</button>
-    </form>
+  <div class="form-group">
+   <label for="name">이름:</label>
+   <input type="text" class="form-control" ng-model="businessInfo.name">
   </div>
+  <div class="form-group">
+   <label for="context">설명:</label>
+   <input type="text"  class="form-control" ng-model="businessInfo.context"> 
+  </div>
+  <div class="form-group">
+   <label for="business_state">전화번호:</label>
+   <input type="text" class="form-control" ng-model="businessInfo.hpno"> </input>
+  </div>
+  <div class="form-group">
+   <label for="business_state">snsid:</label>
+   <input type="text" class="form-control" ng-model="businessInfo.snsid"> </input>
+  </div>
+  <button type="button" class="btn btn-warning" 
+  ng-click="modifyUserInfo(businessInfo.businessid, businessInfo.name, businessInfo.context, businessInfo.hpno, businessInfo.snsid, 1)">변경하기</button>
 </div>
+

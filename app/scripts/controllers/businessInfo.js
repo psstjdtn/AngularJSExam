@@ -29,27 +29,28 @@ angular.module('angularJsexamApp')
         }
     });
 
-    $scope.modifyMenuInfo = function(id, name, age) {
+    $scope.modifyUserInfo = function(businessid, name, context, hpno, snsid, business_state) {
     	var dataPromise = Data.modifyData(
-    		'http://172.16.2.3:52273/menu/' + id,
-    		'&name='+ name + '&age=' + age);
+    		'http://172.16.2.3:52273/bizs/' + businessid,
+    		'&name=' + name + '&context='+ context + 
+    		'&hpno=' + hpno + '&snsid='+ snsid + 
+    		'&business_state=' + business_state
+    		);
     	dataPromise.then(function(results) {
-    		$scope.requestMenuList();
+    		window.alert('정보변경을 완료하였습니다.');
+    		$scope.getUserInfo($scope.businessid);
     	},function(reason){},function(update){});
     }
+
 
     $scope.businessInfo = ""
     $scope.getUserInfo = function(businessid) {
     	var dataPromise = Data.getData(
-    		'http://172.16.2.3:52273/menu/' + businessid, '');
+    		'http://172.16.2.3:52273/bizs/' + businessid, '');
     	dataPromise.then(function(results) {
     		$scope.businessInfo = results.data;
     	},function(reason){},function(update){});
     }
 
-    $scope.businessid = "";
-    $scope.name = "";
-    $scope.price = "";
-    $scope.imgurl = "";
 
 }]);
